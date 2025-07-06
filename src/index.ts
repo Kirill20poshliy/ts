@@ -7,8 +7,8 @@ interface ITotalPriceArgs {
 }
 
 const totalPrice = ({ price, discount, isInstallment, months }: ITotalPriceArgs): number => {
-  // Your code here...
-  return 0
+  const discountedPrice = price * (1 - discount / 100);
+  return isInstallment ? discountedPrice / months : discountedPrice;
 };
 
 const price = totalPrice({ price: 100000, discount: 25, isInstallment: true, months: 12 });
